@@ -23,8 +23,8 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
+            @include('argon.layouts.navbars.sidebar')
         @endauth
-        @include('argon.layouts.navbars.sidebar')
         
         <div class="main-content">
             @include('argon.layouts.navbars.navbar')

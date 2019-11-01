@@ -1,7 +1,12 @@
 @extends('argon.layouts.app')
 
+@section('content-title', 'Dashboard')
+
 @section('content')
+    {{-- for dashboard --}}
     @include('argon.layouts.headers.cards')
+    {{-- for universal --}}
+    {{-- @include('argon.layouts.headers.empty-card') --}}
     
     <div class="container-fluid mt--7">
         <div class="row">
@@ -279,7 +284,7 @@
             </div>
         </div>
 
-        {{-- @include('argon.layouts.footers.auth') --}}
+        @include('argon.layouts.footers.auth')
     </div>
 @endsection
 
