@@ -14,7 +14,7 @@
     {{-- for dashboard  --}}
     {{-- @include('argon.layouts.headers.cards') --}}
     {{-- for me --}}
-    @include('argon.layouts.headers.card-normal')
+    @include('argon.layouts.headers.empty-card')
     {{-- @section('card-name', 'mememememem') --}}
     
     <div class="container-fluid mt--7">
@@ -32,9 +32,11 @@
                     </div>
                     <div class="card-body">
                         <div class="d-flex justify-content-end mb-3">
-                            <a href="{{ route('tempat.create') }}" class="btn btn-primary btn-sm" id="btn-create">
+                            {{-- <a href="{{ route('tempat.create') }}" class="btn btn-primary btn-sm" id="btn-create">
                                 <i class="fas fa-plus"></i> Tambah Jenis
-                            </a>
+                            </a> --}}
+                            <button type="button" data-link="{{ route('tempat.create') }}" class="btn btn-primary btn-sm" id="btn-create">
+                                <i class="fas fa-plus"></i> Tambah Jenis</button>
 
                             <a href="#" class="btn btn-success ml-3 btn-sm">
                                 <i class="fas fa-table"></i> Download Excel
@@ -66,6 +68,7 @@
         </div>
 
         @include('argon.layouts.footers.auth')
+        @include('compo._modal')
     </div>
 @endsection
 
@@ -76,8 +79,8 @@
     $(document).ready(function(){
         $('#tableTempat').DataTable({
             responsive: true,
-            processing:true,
-            serverSide:true,
+            processing: true,
+            serverSide: true,
             ajax: "{{ route('tempat.data') }}",
             columns : [
                     {data: "DT_RowIndex", orderable: false, searchable: false},
@@ -90,5 +93,5 @@
         });  
     });
 </script>
-{{-- <script src="{{ asset('js/tempat.js') }}"></script> --}}
+<script src="{{ asset('js/tempat.js') }}"></script>
 @endpush

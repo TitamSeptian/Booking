@@ -56,7 +56,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('tempat.index') }}">
                         <i class="ni ni-square-pin text-blue"></i> {{ __('Tempat') }}
                     </a>
                 </li>

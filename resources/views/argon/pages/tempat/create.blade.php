@@ -10,13 +10,13 @@
         <label for="lebar">
             Lebar
         </label>
-        <input type="number" name="lebar" min="1" claas="from-control" id="lebar" autocomplete="off">
+        <input type="number" name="lebar" min="1" class="form-control" id="lebar" autocomplete="off">
     </div>
     <div class="form-group">
         <label for="lebar">
             Panjang
         </label>
-        <input type="number" name="panjang" min="1" claas="from-control" id="panjang" autocomplete="off">
+        <input type="number" name="panjang" min="1" class="form-control" id="panjang" autocomplete="off">
     </div>
 
 	<div class="d-flex">

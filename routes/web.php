@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     // return view('index');
     return view('argon.welcome');
@@ -48,6 +50,8 @@ Route::get('/login', function () {
     return view('argon.auth.login');
 })->middleware('guest')->name('login');
 
-Route::post('/p/register', 'OAuthController@postRegister')->middleware('guest')->name('postRegister');
+Route::get('/dashboard', 'MixController@dashboard')->middleware('auth')->name('home');
+// Route::post('/p/register', 'OAuthController@postRegister')->middleware('guest')->name('postRegister');
 
-Route::get('/dashboard', 'MixController@dashboard')->name('home');
+Route::resource('tempat', 'TempatController');
+Route::get('t/data', 'TempatController@data')->name('tempat.data');
