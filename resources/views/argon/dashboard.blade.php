@@ -5,7 +5,7 @@
 @section('tempat-data')
     @foreach ($tempat as $q)
         <li class="nav-item">
-            <a class="nav-link" href="{{$q->id}}">
+            <a class="nav-link" href="{{ route('booking.index', $q->id) }}">
                 {{ $q->name }}
             </a>
         </li>

@@ -7,7 +7,7 @@
 @section('tempat-data')
     @foreach ($tempat as $q)
         <li class="nav-item">
-            <a class="nav-link" href="{{ route('booking.index', $q->id) }}">
+            <a class="nav-link" href="{{$q->id}}">
                 {{ $q->name }}
             </a>
         </li>
@@ -36,7 +36,7 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <h6 class="text-uppercase text-muted ls-1 mb-1">{{ env('app_name') }}</h6>
-                                <h2 class="mb-0">Tempat</h2>
+                                <h2 class="mb-0">Booking {{ $thatTempat->name }}</h2>
                             </div>
                         </div>
                     </div>
@@ -57,21 +57,7 @@
                             </a>
                         </div>
 
-                        <div class="table-responsive">
-							<table class="table table-stripped" id="tableTempat">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Tempat</th>
-                                        <th>Ukuran (m)</th>
-                                        <th class="text-center"></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                </tbody>
-						    </table>
-						</div>
+                        
                     </div>
                 </div>
             </div>
@@ -83,7 +69,7 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('vendor/datatables/js/datatables.min.js') }}"></script>
+{{-- <script src="{{ asset('vendor/datatables/js/datatables.min.js') }}"></script>
 <script src="{{ asset('vendor/sweetalert2.all.js') }}"></script>
 <script>
     $(document).ready(function(){
@@ -103,5 +89,5 @@
         });  
     });
 </script>
-<script src="{{ asset('js/tempat.js') }}"></script>
+<script src="{{ asset('js/tempat.js') }}"></script> --}}
 @endpush

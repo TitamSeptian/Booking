@@ -57,4 +57,4 @@ Route::get('/dashboard', 'MixController@dashboard')->middleware('auth')->name('h
 Route::resource('tempat', 'TempatController');
 Route::get('t/data', 'TempatController@data')->name('tempat.data');
 
-Route::get('booking/{tempat}/main', 'BookingController')->middleware('auth')->name('booking');
+Route::get('booking/{tempat}/main', 'BookingController@indexBooking')->middleware('auth')->name('booking.index');

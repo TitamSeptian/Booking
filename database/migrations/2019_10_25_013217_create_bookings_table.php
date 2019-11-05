@@ -17,8 +17,7 @@ class CreateBookingsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('tempat_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
-            $table->string('jam_awal');
-            $table->string('jam_akhir');
+            $table->string('jam');
             $table->enum('status', ['booking', 'cencel', 'success']);
             $table->timestamps();
 
