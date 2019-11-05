@@ -20,7 +20,10 @@ class TempatController extends Controller
      */
     public function index()
     {
-        return view('argon.pages.tempat.index');
+        $tempat = Tempat::all();
+        return view('argon.pages.tempat.index', [
+            'tempat' => $tempat,
+        ]);
     }
 
     /**
@@ -52,9 +55,11 @@ class TempatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($tempat)
     {
-        //
+        $data = Tempat::findOrFail($tempat);
+
+        return view('argon.pages.tempat.show', compact('data'));
     }
 
     /**
@@ -65,7 +70,11 @@ class TempatController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Tempat::findOrFail($id);
+
+        return view('argon.pages.tempat.edit', compact('data'));
+
+        return response()->json(['msg' => $data->name.' Berhasil Diedit']);
     }
 
     /**
@@ -75,9 +84,17 @@ class TempatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(tempatRequest $request, $id)
     {
-        //
+        $data = Tempat::findOrFail($id);
+
+        $data->update([
+            'name' => $request->name,
+            'lebar' => $request->lebar,
+            'panjang' => $request->lebar,
+            'keterangan' => $request->keterangan,
+        ]);
+        return response()->json(['msg' => $data->name.' Berhasil Diedit']);
     }
 
     /**
@@ -88,7 +105,12 @@ class TempatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $thatTempat = Tempat::findOrFail($id);
+
+        $thatTempat->forceDelete();
+        $thatTempat->delete();
+
+        return response()->json(['msg' => $thatTempat->name . " Berhasil Di Hapus"]);
     }
 
     public function data()

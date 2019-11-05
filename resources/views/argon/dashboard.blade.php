@@ -2,6 +2,16 @@
 
 @section('content-title', 'Dashboard')
 
+@section('tempat-data')
+    @foreach ($tempat as $q)
+        <li class="nav-item">
+            <a class="nav-link" href="{{$q->id}}">
+                {{ $q->name }}
+            </a>
+        </li>
+    @endforeach
+@endsection
+
 @section('content')
     {{-- for dashboard --}}
     @include('argon.layouts.headers.cards')

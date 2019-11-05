@@ -18,6 +18,13 @@
         </label>
         <input type="number" name="panjang" min="1" class="form-control" id="panjang" autocomplete="off">
     </div>
+    <div class="form-group">
+        <label for="keterangan">
+            Keterangan
+        </label>
+        {{-- <input type="text" name="keterangan" id="keterangan"> --}}
+        <textarea class="form-control" id="keterangan" name="keterangan"></textarea>
+    </div>
 
 	<div class="d-flex">
 		<button type="submit" class="btn btn-primary ml-auto" id="action-primary">Tambah</button>

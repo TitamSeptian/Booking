@@ -61,10 +61,20 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-box-2 text-orange"></i> {{ __('Booking') }}
+                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                        <i class="ni ni-box-2 text-orange"></i>
+                        <span class="nav-link-text" style="color: #f4645f;">{{ __('Booking') }}</span>
                     </a>
+                    <div class="collapse" id="navbar-examples">
+                        <ul class="nav nav-sm flex-column">
+                            
+                            @yield('tempat-data')
+
+                            
+                        </ul>
+                    </div>
                 </li>
+                
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-cart text-info"></i> {{ __('Transaksi') }}

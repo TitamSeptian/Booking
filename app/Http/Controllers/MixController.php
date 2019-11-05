@@ -20,6 +20,9 @@ class MixController extends Controller
      */
     public function dashboard()
     {
-        return view('argon.dashboard');
+        $tempat = \App\Tempat::all();
+        return view('argon.dashboard', [
+            'tempat' => $tempat
+        ]);
     }
 }
