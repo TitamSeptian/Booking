@@ -13,7 +13,7 @@ class BookingController extends Controller
         $tempat = Tempat::findorFail($tempatId);
 
         return view('argon.pages.booking.index-booking',[
-            'tempat-all' => $tempat_all,
+            'tempatAll' => $tempat_all,
             'thatTempat' => $tempat,
         ]);
 

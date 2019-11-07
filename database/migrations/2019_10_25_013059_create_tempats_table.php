@@ -16,7 +16,9 @@ class CreateTempatsTable extends Migration
         Schema::create('tempats', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('ukuram');
+            $table->string('lebar');
+            $table->string('panjang');
+            $table->enum('status', ['AKTIF', 'TIDAK - AKTIF']);
             $table->text('keterangan');
             $table->timestamps();
         });
