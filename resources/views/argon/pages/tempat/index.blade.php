@@ -46,11 +46,8 @@
                                 <i class="fas fa-plus"></i> Tambah Jenis
                             </a> --}}
                             <button type="button" data-link="{{ route('tempat.create') }}" class="btn btn-primary btn-sm" id="btn-create">
-                                <i class="fas fa-plus"></i> Tambah Jenis</button>
-
-                            <a href="#" class="btn btn-success ml-3 btn-sm">
-                                <i class="fas fa-table"></i> Download Excel
-                            </a>
+                                <i class="fas fa-plus"></i> Tambah
+                            </button>
 
                             <a href="#" class="btn btn-danger ml-3 btn-sm">
                                 <i class="fas fa-file-pdf"></i> Download PDF

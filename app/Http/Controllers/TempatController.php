@@ -44,7 +44,13 @@ class TempatController extends Controller
      */
     public function store(tempatRequest $request)
     {
-        $data = $request->all();
+        $data = [
+            'name' => $request->name,
+            'lebar' => $request->lebar,
+            'panjang' => $request->panjang,
+            'keterangan' => $request->keterangan,
+            'status' => 'AKTIF',
+        ];
         $tempat = Tempat::create($data);
         return response()->json(['msg' => $tempat->name.' Berhasil Di Tambahkan']);
     }
@@ -91,8 +97,9 @@ class TempatController extends Controller
         $data->update([
             'name' => $request->name,
             'lebar' => $request->lebar,
-            'panjang' => $request->lebar,
+            'panjang' => $request->panjang,
             'keterangan' => $request->keterangan,
+            'status' => $request->status,
         ]);
         return response()->json(['msg' => $data->name.' Berhasil Diedit']);
     }

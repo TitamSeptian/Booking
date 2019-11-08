@@ -25,6 +25,15 @@
         </label>
         <textarea class="form-control" id="keterangan" name="keterangan">{{ $data->keterangan }}</textarea>
     </div>
+    <div class="form-group">
+        <label for="status">
+            Status
+        </label>
+        <select name="status" id="status" class="form-control">
+            <option value="AKTIF" {{ $data->status == 'AKTIF' ? 'selected' : '' }}>AKTIF</option>
+            <option value="NONAKTIF" {{ $data->status == 'NONAKTIF' ? 'selected' : '' }}>NONAKTIF</option>
+        </select>
+    </div>
 
 	<div class="d-flex">
 		<button type="submit" class="btn btn-primary ml-auto" id="action-primary">Edit</button>
