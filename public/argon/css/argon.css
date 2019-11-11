@@ -60,6 +60,11 @@ Copyright 2018 Creative Tim (https://www.creative-tim.com) & UPDIVISION (https:/
     box-sizing: border-box;
 }
 
+.myRed{
+    background-color: #f5365c;
+    color: #fff;
+}
+
 html
 {
     font-family: sans-serif;

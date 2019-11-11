@@ -45,19 +45,47 @@
                             {{-- <a href="{{ route('tempat.create') }}" class="btn btn-primary btn-sm" id="btn-create">
                                 <i class="fas fa-plus"></i> Tambah Jenis
                             </a> --}}
-                            <button type="button" data-link="{{ route('tempat.create') }}" class="btn btn-primary btn-sm" id="btn-create">
-                                <i class="fas fa-plus"></i> Tambah Jenis</button>
-
-                            <a href="#" class="btn btn-success ml-3 btn-sm">
-                                <i class="fas fa-table"></i> Download Excel
-                            </a>
+                            {{-- <button type="button" data-link="{{ route('tempat.create') }}" class="btn btn-primary btn-sm" id="btn-create">
+                                <i class="fas fa-plus"></i> Tambah 
+                            </button> --}}
 
                             <a href="#" class="btn btn-danger ml-3 btn-sm">
                                 <i class="fas fa-file-pdf"></i> Download PDF
                             </a>
                         </div>
-
-                        
+                        <div class="form-group">
+                            <input 
+                                type="date" 
+                                name="tgl_booking" 
+                                id="tgl_booking" 
+                                class="form-control"
+                                data-url="{{ route('booking.find', $thatTempat->id) }}">
+                        </div>
+                        {{-- content here --}}
+                        <div class="table-responsive">
+                            <table border="1" class="table table-striped mt-3">
+                                <thead>
+                                    <tr>
+                                        <th colspan="{{ count($jam) }}" class="text-center">
+                                            <h1>jam main</h1>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr id="table-tr">
+                                        @foreach ($jam as $j)
+                                            <td 
+                                                class="time-start" 
+                                                data-time="{{ $j }}"
+                                                data-url="{{ route('booking.store', [
+                                                    'tempat' => $thatTempat
+                                                ]) }}"
+                                                >{{ $j }}</td>
+                                        @endforeach
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -69,25 +97,7 @@
 @endsection
 
 @push('js')
-{{-- <script src="{{ asset('vendor/datatables/js/datatables.min.js') }}"></script>
+{{-- <script src="{{ asset('vendor/datatables/js/datatables.min.js') }}"></script> --}}
 <script src="{{ asset('vendor/sweetalert2.all.js') }}"></script>
-<script>
-    $(document).ready(function(){
-        $('#tableTempat').DataTable({
-            responsive: true,
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('tempat.data') }}",
-            columns : [
-                    {data: "DT_RowIndex", orderable: false, searchable: false},
-                    {data: "name"},
-                    {data: "lebar", "render": function (a, b ,c) {
-                        return `${c.panjang} x ${c.lebar}`;
-                    }},
-                    {data:'action', orderable: false, searchable: false},
-            ]
-        });  
-    });
-</script>
-<script src="{{ asset('js/tempat.js') }}"></script> --}}
+<script src="{{ asset('js/booking.js') }}"></script>
 @endpush

@@ -58,3 +58,5 @@ Route::resource('tempat', 'TempatController');
 Route::get('t/data', 'TempatController@data')->name('tempat.data');
 
 Route::get('booking/{tempat}/main', 'BookingController@indexBooking')->middleware('auth')->name('booking.index');
+Route::post('booking/{tempat}/main', 'BookingController@findBooking')->middleware('auth')->name('booking.find');
+Route::post('booking/{tempat}/main/start', "BookingController@storeBooking")->middleware('auth')->name('booking.store');

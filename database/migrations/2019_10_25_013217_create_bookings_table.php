@@ -18,7 +18,8 @@ class CreateBookingsTable extends Migration
             $table->bigInteger('tempat_id')->unsigned();
             $table->bigInteger('user_id')->unsigned();
             $table->string('jam');
-            $table->enum('status', ['booking', 'cencel', 'success']);
+            $table->string('tgl_booking');
+            $table->enum('status', ['booking', 'cencel', 'success', 'verifikasi']);
             $table->timestamps();
 
             // $table->foreign('level_id')->references('id')->on('levels')->onDelete('cascade');

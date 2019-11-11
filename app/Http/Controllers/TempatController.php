@@ -20,7 +20,7 @@ class TempatController extends Controller
      */
     public function index()
     {
-        $tempat = Tempat::all();
+        $tempat = Tempat::where('status', '=', 'AKTIF')->get();
         return view('argon.pages.tempat.index', [
             'tempat' => $tempat,
         ]);
