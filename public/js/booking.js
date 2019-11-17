@@ -10,6 +10,7 @@ $("body").on("change", "#tgl_booking", function(e) {
     const tgl = $(this).val();
 
     console.info("okokokok :" + tgl);
+    let clear = $(".time-start").removeClass("myRed");
 
     $.ajax({
         method: "POST",
@@ -53,16 +54,25 @@ $("body").on("change", "#tgl_booking", function(e) {
                     // console.info(myMissions);
                     myMissions.addClass("myRed");
                 } else {
-                    Swal.fire({
-                        title: "Peringatan !",
-                        type: "warning",
-                        text: "Terjadi Kesalahan"
-                    });
+                    console.info(assos + 1 <= res.data.length);
+                    // Swal.fire({
+                    //     title: "Peringatan !",
+                    //     type: "warning",
+                    //     text: "Terjadi Kesalahan"
+                    // });
                 }
             });
         },
         error: function(xhr) {
             console.info(xhr);
+            errors = xhr.responseJSON;
+            if (xhr.status == 401) {
+                Swal.fire({
+                    title: "Peringatan !",
+                    type: "warning",
+                    text: errors.msg
+                });
+            }
         }
     });
 });
@@ -71,4 +81,36 @@ $("body").on("click", ".time-start", function(e) {
     // e.prevenDefault();
     let time = $(this).data("time");
     let url = $(this).data("url");
+    let tempat = $(this).data("place");
+    let title = $("#titleModal").text();
+    Swal.fire({
+        title: "Mau booking ?",
+        type: "question",
+        text: `${title} ?`,
+        showCancelButton: true,
+        confirmButtonColor: "#2dce89",
+        cancelButtonColor: "#8A8A8A",
+        confirmButtonText: "Ya",
+        cancelButtonText: "Batal"
+    }).then(res => {
+        if (res.value) {
+            $.ajax({
+                url: url,
+                dataType: "html",
+                success: function(res) {
+                    $("#myModal .modal-title").text(title);
+                    $("#myModal .modal-body").html(res);
+                    $("#myModal").modal("show");
+                }
+            });
+        }
+    });
+    // $.ajax({
+    //     url:url,
+    //     method: 'POST',
+    //     data:{
+    //         tempat_id:tempat,
+    //         nama_booking:
+    //     }
+    // })
 });

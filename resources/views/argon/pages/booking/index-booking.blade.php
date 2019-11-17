@@ -36,7 +36,7 @@
                         <div class="row align-items-center">
                             <div class="col">
                                 <h6 class="text-uppercase text-muted ls-1 mb-1">{{ env('app_name') }}</h6>
-                                <h2 class="mb-0">Booking {{ $thatTempat->name }}</h2>
+                                <h2 class="mb-0" id="titleModal">Booking {{ $thatTempat->name }}</h2>
                             </div>
                         </div>
                     </div>
@@ -77,9 +77,8 @@
                                             <td 
                                                 class="time-start" 
                                                 data-time="{{ $j }}"
-                                                data-url="{{ route('booking.store', [
-                                                    'tempat' => $thatTempat
-                                                ]) }}"
+                                                data-url="{{ route('booking.create', $thatTempat->id) }}"
+                                                data-place="{{ $thatTempat->id }}"
                                                 >{{ $j }}</td>
                                         @endforeach
                                     </tr>

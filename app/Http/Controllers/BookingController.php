@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\bookingRequest;
 use Illuminate\Http\Request;
 use App\Booking;
 use App\Tempat;
+use Illuminate\Auth\Access\Response;
+
 class BookingController extends Controller
 {
     public function indexBooking($tempatId)
@@ -48,11 +51,35 @@ class BookingController extends Controller
         return response()->json(['msg' => 'Tidak Ada Booking Pada Tanggal '. $request->tgl_booking], 401);
     }
 
-    public function storeBooking(Request $request, $tempat)
+    public function createBooking($tempat)
+    {
+        $tempat = Tempat::findOrfail($tempat);
+        return view('argon.pages.booking.create', ['thatTempat' => $tempat]);
+    }
+
+    public function storeBooking(bookingRequest $request, $tempat)
     {
         $tempat = Tempat::where('id', '=', $tempat)->first();
         if (!$tempat) {
-            return response()->json(['msg', "Terjadi Kesalaha dengan Tempat Booking"], 401);
+            return response()->json(['msg' => "Terjadi Kesalaha dengan Tempat Booking"], 401);
         }
+
+        $jam = Booking::where('tempat_id', '=', $request->tempat_id)->where('jam','=', $request->jam)->first();
+        if (!$jam) {
+            return response()->json(['msg' => "Terjadi Kesalaha dengan Waktu Booking"], 401);
+        }
+
+        $booking = Booking::create([
+            'tempat_id' => $request->tempat_id,
+            'user_id' => $request->user_id,
+            'nama_booking' => $request->nama_booking,
+            'jam' => $request->jam,
+            'status' => $request->status,
+            'tgl_booking' => $request->tgl_booking,
+        ]);
+
+        return Response()->json(['msg' => "Booking Tempat ". $booking->tempat->name . " Pada Jam ". $request->jam]);
+
+
     }
 }
